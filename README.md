@@ -45,4 +45,3 @@ Output = [80, 40, 90, 70, 80]
 - Error: The input array should contain 5 frequencies to make up a soundwave, those an argument error if the array is not 5.
 - Error: The input array should only contain integers, throw an argument error if there's any strings. 
 - Error: The input array should contain only positive numbers, throw an argument error if the number is below 0. 
-
