@@ -8,6 +8,8 @@ class Bandpass
   def filter(soundwave) 
 
     soundwave.each_with_index do |frequency, index|
+      raise "ArgumentError: Soundwave array can not contain strings" if frequency.instance_of?(String)
+
       soundwave[index] = @upper_boundary if frequency > @upper_boundary
       soundwave[index] = @lower_boundary if frequency < @lower_boundary
     end

@@ -27,5 +27,12 @@ describe Bandpass do
         expect(bandpass.filter([20, 60, 20, 60, 40])).to eq([30, 60, 30, 60, 40])
       end
     end
+
+    context "when a soundwave contains unexpected data" do
+      it "throws an argument error when the soundwave contains a string" do
+        message = "ArgumentError: Soundwave array can not contain strings"
+        expect{ bandpass.filter([40, 60, "", 60, 40]) }.to raise_error message
+      end
+    end
   end
 end
