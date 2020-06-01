@@ -9,6 +9,7 @@ class Bandpass
 
     soundwave.each_with_index do |frequency, index|
       soundwave[index] = @upper_boundary if frequency > @upper_boundary
+      soundwave[index] = @lower_boundary if frequency < @lower_boundary
     end
     return soundwave
   end
