@@ -4,20 +4,28 @@ describe Bandpass do
   let(:bandpass) { Bandpass.new(30, 80) }
 
   describe '.filter' do
-    it "accepts an array of one frequency, and returns that same array" do
-      expect(bandpass.filter([50])).to eq([50])
+    it "accepts a soundwave array, that breached no boundries, and returns that same soundwave array" do
+      expect(bandpass.filter([40, 60, 40, 60, 40])).to eq([40, 60, 40, 60, 40])
     end
 
-    it "accepts an array with a range of soundwave frequencies, and returns that same soundwave array" do
-      expect(bandpass.filter([40, 50, 40, 60, 40])).to eq([40, 50, 40, 60, 40])
+    context "when a soundwave contains a frequency that exceeds the upper boundary" do
+      it "converts the single exceeding frequency to the boundary" do
+        expect(bandpass.filter([40, 100, 40, 60, 40])).to eq([40, 80, 40, 60, 40])
+      end
+
+      it "converts multiple exceeding frequencies to the boundary" do
+        expect(bandpass.filter([40, 100, 40, 100, 40])).to eq([40, 80, 40, 80, 40])
+      end
     end
 
-    it "takes an array with frequency that exceeds the upper boundary and sets that frequency to the upper boundary" do
-      expect(bandpass.filter([40, 60, 40, 100, 70])).to eq([40, 60, 40, 80, 70])
-    end
+    context "when a soundwave contains a frequency that exceeds the lower boundary" do
+      it "converts the single exceeding frequency to the boundary" do
+        expect(bandpass.filter([20, 60, 40, 60, 40])).to eq([30, 60, 40, 60, 40])
+      end
 
-    it "receives a soundwave with a frequency exceeding the lower boundary and sets that frequency to the lower boundary" do
-      expect(bandpass.filter([40, 60, 20, 80, 70])).to eq([40, 60, 30, 80, 70])
+      it "converts multiple exceeding frequencies to the boundary" do
+        expect(bandpass.filter([20, 60, 20, 60, 40])).to eq([30, 60, 30, 60, 40])
+      end
     end
   end
 end
