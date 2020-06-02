@@ -6,7 +6,7 @@ class Bandpass
   end
 
   def filter(soundwave) 
-    raise "ArgumentError: Soundwaves must contain at least 5 frequencies" if soundwave.length < 5
+    raise "ArgumentError: Soundwaves must contain at least 5 frequencies" if less_than_five_frequencies_in(soundwave)
 
     soundwave.each_with_index do |frequency, index|
       raise "ArgumentError: Soundwave array can not contain strings" if frequency.instance_of?(String)
@@ -16,5 +16,11 @@ class Bandpass
       soundwave[index] = @lower_boundary if frequency < @lower_boundary
     end
     return soundwave
+  end
+
+  private
+
+  def less_than_five_frequencies_in(soundwave)
+    soundwave.length < 5
   end
 end
