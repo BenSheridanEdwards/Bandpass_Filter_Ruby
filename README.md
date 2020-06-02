@@ -52,4 +52,4 @@ Output = [80, 40, 90, 70, 80]
 
 ## Tests
 
-![RSpec Tests(https://github.com/BenSheridanEdwards/Bandpass_Filter_Ruby/blob/master/images/Bandpass-Tests.png)
+![RSpec Tests](https://github.com/BenSheridanEdwards/Bandpass_Filter_Ruby/blob/master/images/Bandpass-Tests.png)
