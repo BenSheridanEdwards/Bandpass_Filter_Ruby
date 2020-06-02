@@ -34,9 +34,14 @@ describe Bandpass do
         expect{ bandpass.filter([40, 60, "", 60, 40]) }.to raise_error message
       end
 
-      it "throws an arguement error when the soundwave contains a negative frequencies" do
+      it "throws an argument error when the soundwave contains a negative frequencies" do
         message = "ArgumentError: Soundwave frequencies can not be a negative value"
         expect{ bandpass.filter([40, 60, -40, 60, 40]) }.to raise_error message
+      end
+
+      it "throws an argument error when the soundwave contains less than 5 frequencies" do
+        message = "ArgumentError: Soundwaves must contain at least 5 frequencies"
+        expect{ bandpass.filter([40, 60, 60, 40]) }.to raise_error message
       end
     end
   end
