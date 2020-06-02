@@ -33,6 +33,11 @@ describe Bandpass do
         message = "ArgumentError: Soundwave array can not contain strings"
         expect{ bandpass.filter([40, 60, "", 60, 40]) }.to raise_error message
       end
+
+      it "throws an arguement error when the soundwave contains a negative frequencies" do
+        message = "ArgumentError: Soundwave frequencies can not be a negative value"
+        expect{ bandpass.filter([40, 60, -40, 60, 40]) }.to raise_error message
+      end
     end
   end
 end
