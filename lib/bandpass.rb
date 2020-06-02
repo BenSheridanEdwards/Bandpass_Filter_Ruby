@@ -9,7 +9,7 @@ class Bandpass
     raise "ArgumentError: Soundwaves must contain at least 5 frequencies" if less_than_five_frequencies_in(soundwave)
 
     soundwave.each_with_index do |frequency, index|
-      raise "ArgumentError: Soundwave array can not contain strings" if frequency.instance_of?(String)
+      raise "ArgumentError: Soundwave array can not contain strings" if string_data_type(frequency)
       raise "ArgumentError: Soundwave frequencies can not be a negative value" if frequency < 0
 
       soundwave[index] = @upper_boundary if frequency > @upper_boundary
@@ -22,5 +22,9 @@ class Bandpass
 
   def less_than_five_frequencies_in(soundwave)
     soundwave.length < 5
+  end
+
+  def string_data_type(frequency)
+    frequency.instance_of?(String)
   end
 end
