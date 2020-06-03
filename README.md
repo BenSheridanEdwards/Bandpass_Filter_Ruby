@@ -1,8 +1,10 @@
-# Bandpass Filter Challenge
+# Bandpass Filter Challenge - Ruby
 
 ## Description
 
 A bandpass filter is a device that passes frequencies within a certain range and rejects frequencies outside that range. 
+
+This project was built using test-driven development (TDD) with Ruby & RSpec.
 
 ## Specification
 
